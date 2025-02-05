@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SeriesController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    echo "Hello, World";
-});
+Route::get('/series', [SeriesController::class, "index"]);
