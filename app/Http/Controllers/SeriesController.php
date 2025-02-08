@@ -16,6 +16,11 @@ class SeriesController extends Controller
             "Dexter"
         ];
 
-        return view("series-listing", compact("series"));
+        return view("series.index")->with("series", $series);
+    }
+
+    public function create(Request $request)
+    {
+        return view("series.create");
     }
 }
