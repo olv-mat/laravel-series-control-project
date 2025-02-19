@@ -22,15 +22,13 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
-        Serie::create($request->all());
-        $request->session()->flash("success.message", "The series has been created");
-        return to_route("series.index");
+        $series = Serie::create($request->all());
+        return to_route("series.index")->with("success.message", "The series '{$series->name}' has been created");
     }
 
-    public function destroy(Request $request)
+    public function destroy(Serie $series)
     {
-        Serie::destroy($request->series);
-        $request->session()->flash("success.message", "The series has been removed");
-        return to_route("series.index");
+        $series->delete();
+        return to_route("series.index")->with("success.message", "The series '{$series->name}' has been removed");
     }
 }
