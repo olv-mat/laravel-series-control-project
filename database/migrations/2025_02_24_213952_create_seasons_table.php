@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedTinyInteger("number");
             $table->unsignedBigInteger("series_id");
-            $table->foreign("series_id")->references("id")->on("series");
+            $table->foreign("series_id")->references("id")->on("series")->onDelete("cascade");
             $table->timestamps();
         });
     }
