@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Episode extends Model
 {
-    protected $timestamps = false;
+    public $timestamps = false;
+    protected $fillable = ["number"];
 
     public function series()
     {

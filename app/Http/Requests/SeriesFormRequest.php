@@ -23,6 +23,8 @@ class SeriesFormRequest extends FormRequest
     {
         return [
             "name" => ["required", "min:3"],
+            "seasons" => ["required"],
+            "episodes" => ["required"],
         ];
     }
 
@@ -30,7 +32,9 @@ class SeriesFormRequest extends FormRequest
     {
         return [
             "name.required" => "The name field is required",
-            "name.min" => "The name field must be at least :min characters"
+            "name.min" => "The name field must be at least :min characters",
+            "seasons.required" =>"The seasons field is required",
+            "episodes.required" =>"The episodes field is required",
         ];
     }
 }

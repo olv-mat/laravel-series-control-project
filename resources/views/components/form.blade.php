@@ -23,7 +23,7 @@
                 id="name" 
                 autocomplete="off" 
                 placeholder="Fill with the serie name"
-                @isset($name) value="{{ $name }}" @endisset 
+                @isset($name) value="{!! $name !!}" @endisset 
                 class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 flex-1">
         </div>
         <div>
