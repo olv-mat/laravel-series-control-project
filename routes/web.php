@@ -7,4 +7,4 @@ Route::get('/', function () {
     return redirect('/series');
 });
 
-Route::resource("/series", SeriesController::class)->except(["show"]);
+Route::resource("/series", SeriesController::class);

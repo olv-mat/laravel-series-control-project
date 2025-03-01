@@ -18,6 +18,10 @@ class SeriesController extends Controller
         return view("series.index")->with("series", $series)->with("successMessage", $successMessage);
     }
 
+    public function show(Series $series) {
+        return view("series.show")->with("series", $series)->with("seasons", $series->seasons()->with("episodes")->get());
+    }
+
     public function create()
     {
         return view("series.create");
@@ -59,10 +63,10 @@ class SeriesController extends Controller
         return view("series.edit")->with("series", $series);
     }
 
-    public function update(SeriesFormRequest $request, Series $series)
+    public function update(Request $request, Series $series)
     {
         $series->fill($request->all());
         $series->save();
         return to_route("series.index")->with("success.message", "The series '{$series->name}' has been updated");
-    }
+    }    
 }

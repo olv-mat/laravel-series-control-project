@@ -32,6 +32,6 @@
                 <input type="submit" value="Send" class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 text-lg">
             </div>
         </form>
-        <a href="{{ route('series.index') }}" class="block text-center text-indigo-600 hover:underline mt-6 text-lg">Series</a>
+        <a href="{{ route('series.index') }}" class="block text-center text-indigo-600 hover:underline mt-6 text-lg">Back</a>
     </div>
 </x-layout>
