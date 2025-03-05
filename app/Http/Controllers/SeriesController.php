@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{
-    Series, 
-    Season, 
-    Episode,
-};
+use App\Models\Series;
 use App\Repositories\SeriesRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
