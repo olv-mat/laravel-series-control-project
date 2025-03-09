@@ -1,16 +1,5 @@
 <x-layout title="Create">
     <div class="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full mx-auto">
-        @if ($errors->any())
-            <div class="bg-red-500 text-white p-4 mb-4 rounded">
-                <ul class="mt-1 space-y-1">
-                    @foreach ($errors->all() as $error)
-                        <li class="flex items-center">
-                            {{ $error }}
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         <form action="{{ route('series.index')}}" method="post" class="space-y-6">
             @csrf
             <div class="flex items-center space-x-4">
@@ -32,6 +21,6 @@
                 <input type="submit" value="Send" class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 text-lg">
             </div>
         </form>
-        <a href="{{ route('series.index') }}" class="block text-center text-indigo-600 hover:underline mt-6 text-lg">Back</a>
+        <a href="{{ route('series.index') }}" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 mt-4 inline-block">Back</a>
     </div>
 </x-layout>

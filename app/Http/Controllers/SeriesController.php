@@ -14,11 +14,17 @@ class SeriesController extends Controller
     {
         $series = Series::with(["seasons"])->get();
         $successMessage = $request->session()->get("success.message");
-        return view("series.index")->with("series", $series)->with("successMessage", $successMessage);
+        return view("series.index")->with([
+            "series" => $series,
+            "successMessage" => $successMessage
+        ]);
     }
 
     public function show(Series $series) {
-        return view("series.show")->with("series", $series)->with("seasons", $series->seasons()->with("episodes")->get());
+        return view("series.show")->with([
+            "series" => $series,
+            "seasons" => $series->seasons()->with("episodes")->get()
+        ]);
     }
 
     public function create()

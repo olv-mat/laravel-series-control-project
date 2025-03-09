@@ -1,10 +1,10 @@
 <x-layout title="Series">
+    @isset($successMessage)
+        <div class="bg-green-500 text-white p-4 mb-4 rounded">
+            {{ $successMessage }}
+        </div>
+    @endisset
     <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full mx-auto">
-        @isset($successMessage)
-            <div class="bg-green-500 text-white p-4 mb-4 rounded">
-                {{ $successMessage }}
-            </div>
-        @endisset
         <ul class="space-y-2">
             @foreach ($series as $serie)
                 <li class="text-gray-800 flex justify-between items-center">
@@ -21,6 +21,6 @@
                 </li>
             @endforeach
         </ul>
-        <a href="{{ route('series.create') }}" class="block text-center text-indigo-600 hover:underline mt-4">Create</a>
+        <a href="{{ route('series.create') }}" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 mt-4 inline-block">Create</a>
     </div>
 </x-layout>
