@@ -16,5 +16,7 @@ Route::get('/', function () {
 Route::get("/login", [LoginController::class, "index"])->name("login");
 Route::post("/login", [LoginController::class, "store"]);
 Route::get("/register", [RegisterController::class, "index"])->name("register");
-Route::resource("/series", SeriesController::class);
-Route::resource("/season", SeasonController::class)->only(["show", "update"]);
+Route::post("/register", [RegisterController::class, "store"]);
+Route::get("/logout", [LoginController::class, "destroy"])->name("logout");
+Route::resource("/series", SeriesController::class)->middleware(Authenticator::class);
+Route::resource("/season", SeasonController::class)->only(["show", "update"])->middleware(Authenticator::class);

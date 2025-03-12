@@ -15,8 +15,15 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        if (!Auth::attempt($request->all())) {
-            return redirect()->back();
+        if (!Auth::attempt($request->only(["email", "password"]))) {
+            return redirect()->back()->withErrors(["login" => "Invalid Credentials"]);;
         }
+        return to_route("series.index");
+    }
+
+    public function destroy()
+    {
+        Auth::logout();
+        return to_route("login");
     }
 }

@@ -1,10 +1,14 @@
 <x-layout title="Series">
-    @isset($successMessage)
-        <div class="bg-green-500 text-white p-4 mb-4 rounded">
-            {{ $successMessage }}
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full mx-auto relative">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold text-gray-800">Series</h2>
+            <a href="{{ route('logout') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
         </div>
-    @endisset
-    <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full mx-auto">
+        @isset($successMessage)
+            <div class="bg-green-500 text-white p-4 mb-4 rounded">
+                {{ $successMessage }}
+            </div>
+        @endisset
         <ul class="space-y-2">
             @foreach ($series as $serie)
                 <li class="text-gray-800 flex justify-between items-center">

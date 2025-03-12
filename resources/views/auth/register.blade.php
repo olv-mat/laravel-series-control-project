@@ -1,36 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Register</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-        <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Register</h2>
-            <form method="post">
-                @csrf
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                    <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-indigo-300" autocomplete="off">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
-                    <input type="password" id="password" name="password" required class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-indigo-300">
-                </div>
-                <div class="mb-4">
-                    <label for="password_confirmation" class="block text-gray-700 font-medium mb-2">Confirm Password</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" required class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-indigo-300">
-                </div>
-                <button type="submit" class="w-full bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">
-                    Register
-                </button>
-            </form>
-            <p class="mt-4 text-center text-gray-600">
-                Already have an account? 
-                <a href="{{ route('login') }}" class="text-indigo-500 hover:underline">Log in</a>
-            </p>
-        </div>
-    </body>
-</html>
+<x-layout title="Register">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full mx-auto">
+        <form action="{{ route('register') }}" method="post">
+            @csrf
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-semibold">Name</label>
+                <input type="text" id="name" name="name" required autocomplete="off" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-semibold">Email</label>
+                <input type="email" id="email" name="email" required autocomplete="off" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 font-semibold">Password</label>
+                <input type="password" id="password" name="password" required autocomplete="off" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <button type="submit" class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 text-lg">Register</button>
+        </form>
+        <p class="text-gray-600 text-sm mt-4">Already have an account? <a href="{{ route('login') }}" class="text-indigo-500 hover:underline">Login</a></p>
+    </div>
+</x-layout>
