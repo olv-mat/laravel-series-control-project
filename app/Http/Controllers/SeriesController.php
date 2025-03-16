@@ -7,9 +7,15 @@ use App\Repositories\SeriesRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\SeriesFormRequest;
+use App\Http\Middleware\Authenticator;
 
 class SeriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(Authenticator::class)->except("index");
+    }
+
     public function index(Request $request)
     {
         $series = Series::with(["seasons"])->get();

@@ -16,9 +16,9 @@
                     class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 flex-1">
             </div>
             <div>
-                <input type="submit" value="Send" class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 text-lg">
+                <input type="submit" value="Send" class="w-full bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 mt-4 inline-block text-center block">
             </div>
         </form>
-        <a href="{{ route('series.index') }}" class="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 mt-4 inline-block">Back</a>
+        <a href="{{ route('series.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 inline-block">Back</a>
     </div>
 </x-layout>

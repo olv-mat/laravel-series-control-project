@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{
-    Hash,
-    Auth
-};
+use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -17,11 +14,10 @@ class RegisterController extends Controller
         return view("auth.register");
     }
 
-    public function store(Request $request)
+    public function store(Request $request, UserRepository $repository)
     {
         $data = $request->except(["_token"]);
-        $data["password"] = Hash::make($data["password"]);
-        $user = User::create($data);
+        $user = $repository->add($data);
         Auth::login($user);
         return to_route("series.index");
     }

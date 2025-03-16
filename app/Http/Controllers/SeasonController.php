@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class SeasonController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Authenticator::class);
+    }
+
     public function show(Request $request, Season $season)
     {
-        
         return view("season.show")->with("season", $season);
     }
 
