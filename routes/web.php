@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\SeriesCreated;
 use App\Http\Controllers\{
     SeriesController,
     SeasonController,
@@ -20,3 +21,7 @@ Route::post("/register", [RegisterController::class, "store"]);
 Route::get("/logout", [LoginController::class, "destroy"])->name("logout");
 Route::resource("/series", SeriesController::class);
 Route::resource("/season", SeasonController::class)->only(["show", "update"]);
+
+Route::get("/mail", function () {
+    return new SeriesCreated("'Test'");
+});
