@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Series;
+use App\Mail\SeriesCreated;
 use App\Repositories\SeriesRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\SeriesFormRequest;
 use App\Http\Middleware\Authenticator;
+use Illuminate\Support\Facades\Mail;
 
 class SeriesController extends Controller
 {
@@ -41,6 +43,8 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request, SeriesRepository $repository)
     {
         $series = $repository->add($request->all());
+        // $email = new SeriesCreated($series->name);
+        // Mail::to($request->user())->send($email);
         return to_route("series.index")->with("success.message", "The series '{$series->name}' has been created");
     }
 
