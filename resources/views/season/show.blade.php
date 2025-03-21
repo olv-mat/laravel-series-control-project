@@ -4,7 +4,7 @@
         <form action="{{ route('season.update', $season->id) }}" method="post">
             @csrf
             @method('PUT')
-            <ul class="space-y-2">
+            <ul class="space-y-2 mb-4">
                 @foreach ($season->episodes as $episode)
                     <li class="flex items-center justify-between bg-gray-100 p-2 rounded-lg">
                         <span class="text-gray-800 font-semibold">Episode {{ $episode->number }}</span>
@@ -19,7 +19,7 @@
                     </li>
                 @endforeach
             </ul>
-            <button type="submit" class="w-full bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 mt-4 inline-block text-center block">Save</button>
+            <input type="submit" value="Save" class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 text-lg cursor-pointer">
         </form>
         <a href="{{ route('series.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 inline-block">Back</a>
     </div>

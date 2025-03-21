@@ -20,9 +20,14 @@ class SeriesController extends Controller
 
     public function index(Request $request)
     {
+        $name = "Guest";
+        if (!is_null($request->user())) {
+            $name = $request->user()->name;
+        }
         $series = Series::with(["seasons"])->get();
         $successMessage = $request->session()->get("success.message");
         return view("series.index")->with([
+            "name" => $name,
             "series" => $series,
             "successMessage" => $successMessage
         ]);
@@ -43,8 +48,8 @@ class SeriesController extends Controller
     public function store(SeriesFormRequest $request, SeriesRepository $repository)
     {
         $series = $repository->add($request->all());
-        // $email = new SeriesCreated($series->name);
-        // Mail::to($request->user())->send($email);
+        $email = new SeriesCreated($series->name);
+        Mail::to($request->user())->send($email);
         return to_route("series.index")->with("success.message", "The series '{$series->name}' has been created");
     }
 

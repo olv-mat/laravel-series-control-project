@@ -11,12 +11,11 @@
                     name="name" 
                     id="name" 
                     autocomplete="off" 
-                    placeholder="Fill with the serie name"
                     @isset($series) value="{!! $series->name !!}" @endisset 
                     class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 flex-1">
             </div>
             <div>
-                <input type="submit" value="Send" class="w-full bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 mt-4 inline-block text-center block">
+                <input type="submit" value="Save" class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 text-lg cursor-pointer">
             </div>
         </form>
         <a href="{{ route('series.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 inline-block">Back</a>

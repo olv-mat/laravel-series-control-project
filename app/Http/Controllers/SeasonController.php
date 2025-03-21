@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Season;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Middleware\Authenticator;
 
 class SeasonController extends Controller
 {
