@@ -49,7 +49,8 @@ class SeriesController extends Controller
     {
         $series = $repository->add($request->all());
         $email = new SeriesCreated($series->name);
-        Mail::to($request->user())->send($email);
+        $when = now()->addSeconds(2);
+        Mail::to($request->user())->later($when, $email);
         return to_route("series.index")->with("success.message", "The series '{$series->name}' has been created");
     }
 
