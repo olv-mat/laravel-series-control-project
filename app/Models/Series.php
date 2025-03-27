@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\{
 
 class Series extends Model
 {
-    protected $fillable = ["name"];
+    protected $fillable = ["name", "cover"];
 
     public function seasons()
     {

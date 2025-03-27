@@ -1,6 +1,6 @@
 <x-layout title="Create">
     <div class="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full mx-auto">
-        <form action="{{ route('series.index')}}" method="post" class="space-y-6">
+        <form action="{{ route('series.index')}}" method="post" class="space-y-6" enctype="multipart/form-data">
             @csrf
             <div class="flex items-center space-x-4">
                 <label for="name" class="text-base font-medium text-gray-700">Name:</label>
@@ -16,6 +16,12 @@
                 <label for="episodes" class="text-base font-medium text-gray-700">Episodes:</label>
                 <input type="number" name="episodes" id="episodes" autocomplete="off"
                 class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div class="flex items-center space-x-4">
+                <label for="cover" class="text-base font-medium text-gray-700 cursor-pointer bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300">
+                    Upload Cover
+                </label>
+                <input type="file" name="cover" id="cover" accept="image/*" class="hidden">
             </div>
             <div>
                 <input type="submit" value="Add" class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 text-lg cursor-pointer">
