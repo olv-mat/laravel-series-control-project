@@ -25,6 +25,7 @@ class SeriesFormRequest extends FormRequest
             "name" => ["required", "min:3"],
             "seasons" => ["required"],
             "episodes" => ["required"],
+            "cover" => ["image", "mimes:png,jpg,jpeg"]
         ];
     }
 

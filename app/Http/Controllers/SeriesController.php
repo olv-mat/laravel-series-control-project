@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Series;
-use App\Events\SeriesCreated;
+use App\Events\{SeriesCreated, SeriesDeleted};
 use App\Repositories\SeriesRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -46,7 +46,14 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request, SeriesRepository $repository)
     {
-        $series = $repository->add($request->all());
+        $requestData = $request->all();
+
+        if ($request->file("cover")) {
+            $path = $request->file("cover")->store("covers", "public");
+            $requestData["cover"] = $path;
+        }
+
+        $series = $repository->add($requestData);
         SeriesCreated::dispatch($series->name, $request->user());
         return to_route("series.index")->with("success.message", "The series '{$series->name}' has been created");
     }
@@ -54,6 +61,9 @@ class SeriesController extends Controller
     public function destroy(Series $series)
     {
         $series->delete();
+        if ($series->cover) {
+            SeriesDeleted::dispatch($series);   
+        }
         return to_route("series.index")->with("success.message", "The series '{$series->name}' has been removed");
     }
 

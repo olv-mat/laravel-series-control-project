@@ -16,8 +16,9 @@
         </div>
         <ul class="space-y-4 mb-6">
             @foreach ($series as $serie)
-                <li class="text-gray-800 flex justify-between items-center bg-gray-100 p-4 rounded-lg shadow">
-                    <span class="font-medium">{{ $serie->name }}</span>
+                <li class="text-gray-800 flex items-center bg-gray-100 p-4 rounded-lg shadow space-x-6">
+                    <img src="{{ $serie->cover ? asset('storage/' . $serie->cover) : 'https://placehold.co/600x400' }}" alt="Capa de {{ $serie->name }}" class="w-20 h-20 object-cover rounded-lg">
+                    <span class="font-medium flex-1">{{ $serie->name }}</span>
                     <div class="flex space-x-2">
                         @auth
                         <a href="{{ route('series.show', $serie->id) }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Show</a>

@@ -21,7 +21,7 @@
                 <label for="cover" class="text-base font-medium text-gray-700 cursor-pointer bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300">
                     Upload Cover
                 </label>
-                <input type="file" name="cover" id="cover" accept="image/*" class="hidden">
+                <input type="file" name="cover" id="cover" class="hidden">
             </div>
             <div>
                 <input type="submit" value="Add" class="w-full p-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 text-lg cursor-pointer">
