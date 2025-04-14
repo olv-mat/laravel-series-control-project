@@ -15,13 +15,34 @@ class SeriesController extends Controller
         return Series::all();
     }
 
+    public function show(int $id)
+    {
+        $series = Series::with('seasons.episodes')->find($id);
+        if (is_null($series)) {
+            return response()->json(["message" => "Series not found"], 404);
+        }
+        return $series;
+    }
+
     public function store(SeriesFormRequest $request, SeriesRepository $repository)
     {
         return response()->json($repository->add($request->all()), 201);
     }
 
-    public function show(int $id)
+    public function update(int $id, Request $request)
     {
-        return Series::whereId($id)->with('seasons.episodes')->first();
+        $series = Series::find($id);
+        if (is_null($series)) {
+            return response()->json(["message" => "Series not found"], 404);
+        }
+        $series->fill($request->all());
+        $series->save();
+        return $series;
+    }
+
+    public function destroy(int $id)
+    {
+        Series::destroy($id);
+        return response()->noContent();
     }
 }
