@@ -10,9 +10,16 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Series::all();
+        $query = Series::query();
+        $name = $request->name;
+
+        if (!is_null($name)) {
+            $query->where("name", $name);
+        }
+
+        return $query->paginate(2);
     }
 
     public function show(int $id)
