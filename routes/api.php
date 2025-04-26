@@ -16,3 +16,4 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('/series', SeriesController::class);
 Route::get('/series/{series}/seasons', [SeasonsController::class, "show"]);
 Route::get('/series/{series}/episodes', [EpisodesController::class, "show"]);
+Route::patch('/episodes/{episode}', [EpisodesController::class, "update"]);
